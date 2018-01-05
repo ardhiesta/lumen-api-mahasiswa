@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'api_mhs'], function () use ($router) {
 	$router->get('mahasiswa',  ['uses' => 'MahasiswaController@showAllMahasiswa']);
 	
-	/*$router->get('mahasiswa/{nim}', ['uses' => 'MahasiswaController@showOneMahasiswa']);*/
+	$router->get('mahasiswa/{nim}', ['uses' => 'MahasiswaController@showOneMahasiswa']);
 
 	$router->post('mahasiswa', ['uses' => 'MahasiswaController@create']);
 /*

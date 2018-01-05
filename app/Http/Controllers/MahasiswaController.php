@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -11,10 +12,13 @@ class MahasiswaController extends Controller
         return response()->json(Mahasiswa::all());
     }
 
-    /*public function showOneMahasiswa($nim)
+    public function showOneMahasiswa($nim)
     {
-        return response()->json(Mahasiswa::find($nim));
-    }*/
+		$mahasiswa = DB::select('select * from mahasiswas where nim = ?', [$nim]);
+		return response()->json($mahasiswa, 200);
+		
+        //return response()->json(Mahasiswa::where('nim', $nim));
+    }
 
     public function create(Request $request)
     {
